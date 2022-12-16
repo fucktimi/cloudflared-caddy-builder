@@ -3,8 +3,7 @@ name: Build caddy
 on:
   release:
     types: 
-      - 'prereleased' 
-      - 'published' 
+      - 'prereleased'  
       - 'released'
 
 jobs:
