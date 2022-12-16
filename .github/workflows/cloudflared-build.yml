@@ -1,0 +1,48 @@
+name: Build cloudflared-s390x
+
+on:
+  release:
+    types: 
+      - 'prereleased'  
+      - 'released'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - {
+            name: "linux-s390x",
+            GOARCH: s390x,
+            GOOS: linux,
+            release: true
+          }
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install go
+      uses: actions/setup-go@v3
+      with:
+        go-version: '1.19'
+        check-latest: true
+    
+    - name: Build cloudflared of s390x
+      run: |
+        mkdir release-tmp/
+        cd release-tmp/
+        git clone https://github.com/cloudflare/cloudflared --depth=1 --branch 2022.11.1
+        cd cloudflared/
+        GOOS=linux GOARCH=s390x make cloudflared
+        mv cloudflared ./release-tmp/cloudflared-s390x-${{ github.ref }}
+        
+    - name: Upload to GitHub Release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GAHUB_TOKEN }}
+        file: ./release-tmp/cloudflared-s390x-${{ github.ref }}
+        tag: ${{ github.ref }}
+        overwrite: true
