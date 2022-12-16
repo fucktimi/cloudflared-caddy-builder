@@ -135,7 +135,7 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       if: github.event_name == 'release' && matrix.config.release && matrix.config.GOOS == 'windows'
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEND }}
+        repo_token: ${{ secrets.GAYHUB_TOKEN }}
         file: ./release-ready/caddy-${{ matrix.config.name }}.zip
         tag: ${{ github.ref }}
         overwrite: true
@@ -144,7 +144,7 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       if: github.event_name == 'release' && matrix.config.release && matrix.config.GOOS != 'windows'
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEND }}
+        repo_token: ${{ secrets.GAYHUB_TOKEN }}
         file: ./release-ready/caddy-${{ matrix.config.name }}.tar.gz
         tag: ${{ github.ref }}
         overwrite: true
