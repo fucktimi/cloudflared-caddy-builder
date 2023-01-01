@@ -34,7 +34,7 @@ jobs:
       run: |
         mkdir release-tmp/
         cd release-tmp/
-        git clone https://github.com/cloudflare/cloudflared --depth=1 --branch 2022.11.1
+        git clone https://github.com/cloudflare/cloudflared --depth=1 --branch 2022.12.1
         cd cloudflared/
         GOOS=linux GOARCH=s390x make cloudflared
         mv cloudflared ../cloudflared-s390x
