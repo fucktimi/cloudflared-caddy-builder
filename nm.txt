@@ -1,0 +1,1 @@
+vless://6042e857-7d96-488a-a8b8-7655ed8d2870@172.67.178.129:443?host=broon.rndedie1.tk&path=%2Fgzkl-love-you%3Fed%3D2048&type=ws&encryption=none&flow=xtls-rprx-vision&security=tls&sni=broon.rndedie1.tk#colab
